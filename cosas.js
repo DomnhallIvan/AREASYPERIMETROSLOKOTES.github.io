@@ -1,85 +1,75 @@
 
-console.log("Probando probando xd");
+class Poligono_Regular_Shido {
+    constructor(lados) {
+        this.lados = lados;
+    }
 
-let datosPersonales={
-    nombre : "Ivan Paniagua Maldonado",
-    Edad: 20,
-    soyMainRidley:true,
-    pasatiempos:["Jugar Videojuegos","Ver vídeos","Jugar/Pasear a mi perro","Leer"],
-    contacto:{
-        email:"ipaniaguamaldonado@gmail.com",
-        instagram:"panvan23"
-    },
-    obtenerEdad: function()
-    {
-        return this.Edad;
-    },    
+    obtenerPerimetro() {
+        return this.lados.reduce((a, b) => a + b, 0);
+    }
 
-    LibrosArray:[
-        {
-            nombreLibro:"El Rey Carbón",
-            primerNombreAutor:"Sinclair",
-            primerApellidoAutor:"Upton",
-            País:"México",
-            Publisher:"Fondo de Cultura Económica",
-            formatoAppa: function()
-            {
-                console.log(`Autor: ${this.primerNombreAutor}`);
-                console.log(`Apellido: ${this.primerApellidoAutor}`);
-                console.log(`Nombre_del_libro: ${this.nombreLibro}`);
-                console.log(`País: ${this.País}`);
-                console.log(`Publisher: ${this.Publisher}`);                
-            }
-        },
-        {
-            nombreLibro:"Ask Iwata",
-            primernombreEditor:" Hobonichi",
-            primerApellidoAutor:" ",
-            País:"Estados Unidos",
-            Publisher:"VIZ Media LLC",
-            formatoAppa: function()
-            {
-                console.log(`Editor: ${this.primernombreEditor}`);
-                console.log(`Apellido: ${this.primerApellidoAutor}`);
-                console.log(`Nombre_del_libro: ${this.nombreLibro}`);
-                console.log(`País: ${this.País}`);
-                console.log(`Publisher: ${this.Publisher}`);                
-            }
-        },
-        {
-            nombreLibro:"El Juego de Ender",
-            primerNombreAutor:"Orson",
-            primerApellidoAutor:"Scott",
-            País:"España",
-            Publisher:"PRH Grupo Editorial",
-            formatoAppa: function()
-            {
-                console.log(`Autor: ${this.primerNombreAutor}`);
-                console.log(`Apellido: ${this.primerApellidoAutor}`);
-                console.log(`Nombre_del_libro: ${this.nombreLibro}`);
-                console.log(`País: ${this.País}`);
-                console.log(`Publisher: ${this.Publisher}`);                
-            }
-        },
-    ],
+    obtenerArea() {
+        return "Área no calculada";
+    }
+}
 
-};
+class Cuadrado extends Poligono_Regular_Shido {
+    obtenerArea() {
+        if (this.lados.length === 4) {
+            return this.lados[0] ** 2;
+        } else {
+            return "Área no calculada";
+        }
+    }
 
-console.log("DatosPersonales: ");
-console.log(`Nombre: ${datosPersonales.nombre}`);
-console.log(`Edad: ${datosPersonales.nombre}`);
-console.log(`Email: ${datosPersonales.nombre}`);
-console.log(`Es main Ridley? ${datosPersonales.soyMainRidley}`);
-console.log(`Teléfono: ${datosPersonales.nombre}`);
-console.log(`Pasatiempos: ${datosPersonales.nombre}`);
+    obtenerPerimetro() {
+        return this.lados[0] * 4;
+    }
+}
 
-console.log("\nLibros Favoritos:");
-console.log("\n");
+class Triangulo extends Poligono_Regular_Shido {
+    obtenerArea() {
+        if (this.lados.length === 3) {
+            const [a, b, c] = this.lados;
+            const l = this.obtenerPerimetro() / 2;
+            return Math.sqrt(l * (l - a) * (l - b) * (l - c));
+        } else {
+            return "Área no calculada";
+        }
+    }
+
+    obtenerPerimetro() {
+        return this.lados[0]*3;
+    }
+}
 
 
 
-datosPersonales.LibrosArray.forEach(libro => {
-    libro.formatoAppa();
-    console.log("");
-});
+class Pentagono extends Poligono_Regular_Shido {
+    obtenerArea() {
+        if (this.lados.length === 5) {
+            const lado = this.lados[0];
+            return (5 * lado ** 2) / (4 * Math.tan(Math.PI / 5));
+        } else {
+            return "Área no calculada";
+        }
+    }
+
+    obtenerPerimetro() {
+        return this.lados[0] * 5;
+    }
+}
+
+
+const triangulo = new Triangulo([6, 6, 6]);
+console.log(`Área del triángulo: ${triangulo.obtenerArea()}`);
+console.log(`Perímetro del triángulo: ${triangulo.obtenerPerimetro()}`);
+
+const cuadrado = new Cuadrado([5, 5, 5, 5]);
+console.log(`Área del cuadrado: ${cuadrado.obtenerArea()}`);
+console.log(`Perímetro del cuadrado: ${cuadrado.obtenerPerimetro()}`);
+
+const pentagono = new Pentagono([2, 2, 2, 2, 2]);
+console.log(`Área del pentágono: ${pentagono.obtenerArea()}`);
+console.log(`Perímetro del pentágono: ${pentagono.obtenerPerimetro()}`);
 
