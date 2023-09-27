@@ -9,7 +9,7 @@ class Poligono_Regular_Shido {
     }
 
     obtenerArea() {
-        return "Área no calculada";
+        return "Fallo en Área";
     }
 }
 
@@ -18,7 +18,7 @@ class Cuadrado extends Poligono_Regular_Shido {
         if (this.lados.length === 4) {
             return this.lados[0] ** 2;
         } else {
-            return "Área no calculada";
+            return "Fallo en Área";
         }
     }
 
@@ -34,7 +34,7 @@ class Triangulo extends Poligono_Regular_Shido {
             const l = this.obtenerPerimetro() / 2;
             return Math.sqrt(l * (l - a) * (l - b) * (l - c));
         } else {
-            return "Área no calculada";
+            return "Fallo en Área";
         }
     }
 
@@ -51,7 +51,7 @@ class Pentagono extends Poligono_Regular_Shido {
             const lado = this.lados[0];
             return (5 * lado ** 2) / (4 * Math.tan(Math.PI / 5));
         } else {
-            return "Área no calculada";
+            return "Bruh";
         }
     }
 

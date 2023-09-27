@@ -4,5 +4,5 @@ Práctica 4
 
 https://github.com/DomnhallIvan/AREASYPERIMETROSLOKOTES.github.io
 
-https://domnhallivan.github.io/Eivan.github.io/
+https://domnhallivan.github.io/AREASYPERIMETROSLOKOTES.github.io/
 
